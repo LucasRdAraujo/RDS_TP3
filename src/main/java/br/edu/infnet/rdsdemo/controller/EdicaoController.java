@@ -62,8 +62,8 @@ public class EdicaoController {
                 return new StringBuilder().append("editar/").append(id).toString();
             } else {
                 pessoa.setEndereco(endereco);
-                endereco.setPessoa(pessoa);
-                pessoaService.deletePessoaById(id);
+                // endereco.setPessoa(pessoa);
+                // pessoaService.deletePessoaById(id);
                 pessoaService.store(pessoa);
             }
             return "redirect:/pessoas";

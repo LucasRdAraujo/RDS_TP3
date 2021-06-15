@@ -7,6 +7,7 @@ import java.time.Instant;
 
 import javax.annotation.PostConstruct;
 
+import com.amazonaws.ClientConfiguration;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;

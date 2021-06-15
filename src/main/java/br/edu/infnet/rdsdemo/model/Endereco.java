@@ -20,8 +20,8 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "endereco")
-    private Pessoa pessoa;
+    // @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "endereco")
+    // private Pessoa pessoa;
 
     @JsonProperty("cep")
     private String cep;
@@ -52,13 +52,13 @@ public class Endereco {
         this.id = id;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
+    // public Pessoa getPessoa() {
+    //     return pessoa;
+    // }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
+    // public void setPessoa(Pessoa pessoa) {
+    //     this.pessoa = pessoa;
+    // }
 
     @JsonProperty("cep")
     public String getCep() {

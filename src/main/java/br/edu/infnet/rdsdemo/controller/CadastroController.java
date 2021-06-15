@@ -61,7 +61,7 @@ public class CadastroController {
                     return "cadastro";
                 Pessoa pessoa = new Pessoa(prdto.getNome(), prdto.getEmail(), prdto.getTelefone(), endereco);
                 pessoa.setImagemPerfil(url);
-                endereco.setPessoa(pessoa);
+                // endereco.setPessoa(pessoa);
                 pessoaService.store(pessoa);
             }
 
