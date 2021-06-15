@@ -26,6 +26,11 @@ public class PessoaService implements IPessoaService {
         pessoaRepository.save(pessoa);
     }
 
+    // @Override
+    // public void update(Pessoa pessoa) {
+    //     pessoaRepository.
+    // }
+
     @Override
     public void deletePessoaById(Long id) {
         pessoaRepository.deleteById(id);

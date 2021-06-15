@@ -18,14 +18,16 @@
                         <input type="submit" value="Procurar">
                     </form>
 
-                    <c:forEach items="${pessoas}" var="pessoa">
-                        <div>
-                            <img src="${pessoa.imagemPerfil}" alt="">
-                            <span>${pessoa.nome}</span>
-                            <a href="/deletar/${pessoa.id}" type="button">Deletar</a>
-                            <a href="/editar/${pessoa.id}">Editar</a>
-                        </div>
-                    </c:forEach>
+                    <table>
+                        <c:forEach items="${pessoas}" var="pessoa">
+                            <tr>
+                                <td><img src="${pessoa.imagemPerfil}" alt=""></td>
+                                <td>${pessoa.nome}</td>
+                                <td><a href="/editar/${pessoa.id}" type="button">Editar</a></td>
+                                <td><a href="/deletar/${pessoa.id}" type="button">Deletar</a></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
                     <a href="/cadastrar" type="button">Cadastrar outros</a>
                 </body>
 

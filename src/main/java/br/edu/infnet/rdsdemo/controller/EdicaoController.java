@@ -49,6 +49,7 @@ public class EdicaoController {
     @PostMapping("/{id}/")
     public String editarPessoa(@PathVariable("id") Long id, @ModelAttribute("pessoadto") @Valid PessoaRegistroDto prdto,
             BindingResult result) {
+
         try {
             Pessoa pessoa = pessoaService.getPessoaById(id);
             pessoa.setNome(prdto.getNome());
@@ -62,6 +63,7 @@ public class EdicaoController {
             } else {
                 pessoa.setEndereco(endereco);
                 endereco.setPessoa(pessoa);
+                pessoaService.deletePessoaById(id);
                 pessoaService.store(pessoa);
             }
             return "redirect:/pessoas";
