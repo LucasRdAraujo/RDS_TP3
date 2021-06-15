@@ -2,8 +2,3 @@
 # Pegue no TXT :D
 # Pegue no TXT :D
 # Pegue no TXT :D
-amazonProperties:
-    endpointUrl: endpoint
-    accessKey: chaveacesso
-    secretKey: chavesecreta
-    bucketName: nomebucket

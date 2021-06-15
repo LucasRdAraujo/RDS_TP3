@@ -47,16 +47,20 @@ public class CadastroController {
     }
 
     @PostMapping("/")
-    public String cadastrarPessoa(@RequestParam("file") MultipartFile file, @ModelAttribute("pessoadto") @Valid PessoaRegistroDto prdto, BindingResult result) {
+    public String cadastrarPessoa(@RequestParam("file") MultipartFile file,
+            @ModelAttribute("pessoadto") @Valid PessoaRegistroDto prdto, BindingResult result) {
         try {
-            amazonService.uploadFile(file);
+            String url = amazonService.uploadFile(file);
             Endereco endereco = iEnderecoService.pegarEndereco(prdto.getCep());
-            
-            if(endereco.getErro() || result.hasErrors()) {
+
+            if (endereco.getErro() || result.hasErrors()) {
                 result.rejectValue("cep", null, "CEP inválido");
                 return "cadastro";
             } else {
+                if (url == null)
+                    return "cadastro";
                 Pessoa pessoa = new Pessoa(prdto.getNome(), prdto.getEmail(), prdto.getTelefone(), endereco);
+                pessoa.setImagemPerfil(url);
                 endereco.setPessoa(pessoa);
                 pessoaService.store(pessoa);
             }

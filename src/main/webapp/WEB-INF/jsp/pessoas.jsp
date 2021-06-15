@@ -20,6 +20,7 @@
 
                     <c:forEach items="${pessoas}" var="pessoa">
                         <div>
+                            <img src="${pessoa.imagemPerfil}" alt="">
                             <span>${pessoa.nome}</span>
                             <a href="/deletar/${pessoa.id}" type="button">Deletar</a>
                             <a href="/editar/${pessoa.id}">Editar</a>

@@ -1,7 +1,6 @@
 package br.edu.infnet.rdsdemo.service;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.Instant;
@@ -13,6 +12,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -46,9 +46,14 @@ public class AmazonService {
             fileUrl.append(endpointUrl).append("/").append(bucketName).append("/").append(fileName);
             uploadFileToBucket(fileName, file);
         } catch (Exception e) {
-            e.printStackTrace();
+            return null;
         }
         return fileUrl.toString();
+    }
+
+    public void deleteFileFromS3Bucket(String fileUrl) {
+        String fileName = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
+        s3client.deleteObject(new DeleteObjectRequest(bucketName, fileName));
     }
 
     private void uploadFileToBucket(String fileName, File file) {
